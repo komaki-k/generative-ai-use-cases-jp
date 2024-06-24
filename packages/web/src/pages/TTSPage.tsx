@@ -124,9 +124,9 @@ const ChatPage: React.FC = () => {
 
   const title = useMemo(() => {
     if (chatId) {
-      return getConversationTitle(chatId) || 'チャット';
+      return getConversationTitle(chatId) || 'チャット ※音声読み上げボタン付き';
     } else {
-      return 'チャット';
+      return 'チャット ※音声読み上げボタン付き';
     }
   }, [chatId, getConversationTitle]);
 
@@ -316,7 +316,7 @@ const ChatPage: React.FC = () => {
         onDragOver={fileUpload ? handleDragOver : undefined}
         className={`${!isEmpty ? 'screen:pb-36' : ''} relative`}>
         <div className="invisible my-0 flex h-0 items-center justify-center text-xl font-semibold lg:visible lg:my-5 lg:h-min print:visible print:my-5 print:h-min">
-          WIP機能(まだ未完成です)
+          カスタマイズ機能
         </div>
         <div className="invisible my-0 flex h-0 items-center justify-center text-xl font-semibold lg:visible lg:my-5 lg:h-min print:visible print:my-5 print:h-min">
           {title}
