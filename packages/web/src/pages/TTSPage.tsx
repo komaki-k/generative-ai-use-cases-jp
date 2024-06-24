@@ -256,7 +256,6 @@ const ChatPage: React.FC = () => {
       return messages;
     }
   }, [showSystemContext, rawMessages, messages]);
-  console.log(showingMessages)
 
   const currentSystemContext = useMemo(() => {
     return getCurrentSystemContext();

@@ -78,15 +78,15 @@ const ChatMessage: React.FC<Props> = (props) => {
   const pollyClient = new PollyClient({
     region: 'ap-northeast-1',
     credentials: {
-      accessKeyId: process.env.ACCESS_KEY_ID as string,
-      secretAccessKey: process.env.SECRET_ACEESS_KEY as string
+      accessKeyId: import.meta.env.VITE_ACCESS_KEY_ID as string,
+      secretAccessKey: import.meta.env.VITE_SECRET_ACEESS_KEY as string
     }
   })
 
   async function streamToArrayBuffer(stream: ReadableStream): Promise<ArrayBuffer> {
-    const chunks = [];
+    const chunks: Array<Blob> = [];
     const reader = stream.getReader();
-    let result;
+    let result: ReadableStreamReadResult<Blob>;
     while (!(result = await reader.read()).done) {
         chunks.push(result.value);
     }
