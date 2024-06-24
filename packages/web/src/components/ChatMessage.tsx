@@ -11,12 +11,15 @@ import BedrockIcon from '../assets/bedrock.svg?react';
 import useChat from '../hooks/useChat';
 import useTyping from '../hooks/useTyping';
 import useFileApi from '../hooks/useFileApi';
+import Button from './Button';
+import { PollyClient, SynthesizeSpeechCommand } from '@aws-sdk/client-polly';
 
 type Props = BaseProps & {
   idx?: number;
   chatContent?: ShownMessage;
   loading?: boolean;
   hideFeedback?: boolean;
+  isVoiceEnabled?: boolean;
 };
 
 const ChatMessage: React.FC<Props> = (props) => {
@@ -71,6 +74,46 @@ const ChatMessage: React.FC<Props> = (props) => {
       setIsSendingFeedback(false);
     }
   };
+
+  const pollyClient = new PollyClient({
+    region: 'ap-northeast-1',
+    credentials: {
+      accessKeyId: process.env.ACCESS_KEY_ID as string,
+      secretAccessKey: process.env.SECRET_ACEESS_KEY as string
+    }
+  })
+
+  async function streamToArrayBuffer(stream: ReadableStream): Promise<ArrayBuffer> {
+    const chunks = [];
+    const reader = stream.getReader();
+    let result;
+    while (!(result = await reader.read()).done) {
+        chunks.push(result.value);
+    }
+    return new Blob(chunks).arrayBuffer();
+  }
+
+  const onSynthethize = async (chatContent: ShownMessage) => {
+    const command = new SynthesizeSpeechCommand({
+      OutputFormat: 'mp3',
+      Text: chatContent.content,
+      VoiceId: 'Tomoko',
+      Engine: 'neural',
+    });
+
+    try {
+      const data = await pollyClient.send(command)
+      if (data.AudioStream instanceof ReadableStream) {
+        const audioBuffer = await streamToArrayBuffer(data.AudioStream);
+        const blob = new Blob([audioBuffer], { type: 'audio/mpeg' });
+        const url = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        await audio.play();
+      }
+    } catch (err) {
+      console.error('Error synthesizing speech:', err);
+    }
+  }
 
   return (
     <div
@@ -179,6 +222,14 @@ const ChatMessage: React.FC<Props> = (props) => {
                       disabled={disabled}
                       onClick={() => onSendFeedback('bad')}
                     />
+                    {props.isVoiceEnabled && (
+                      <Button
+                        className='whitespace-nowrap'
+                        onClick={() => onSynthethize(chatContent)}
+                      >
+                      音声
+                    </Button>
+                    )}
                   </>
                 )}
               </>

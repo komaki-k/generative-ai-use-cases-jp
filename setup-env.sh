@@ -2,7 +2,7 @@
 
 set -eu
 
-STACK_NAME='GenerativeAiUseCasesStack'
+STACK_NAME='komaki-GenerativeAiUseCasesStack'
 
 function extract_value {
     echo $1 | jq -r ".Stacks[0].Outputs[] | select(.OutputKey==\"$2\") | .OutputValue"
@@ -29,3 +29,5 @@ export VITE_APP_SAML_COGNITO_DOMAIN_NAME=`extract_value "$stack_output" SamlCogn
 export VITE_APP_SAML_COGNITO_FEDERATED_IDENTITY_PROVIDER_NAME=`extract_value "$stack_output" SamlCognitoFederatedIdentityProviderName`
 export VITE_APP_AGENT_NAMES=`extract_value "$stack_output" AgentNames`
 export VITE_APP_RECOGNIZE_FILE_ENABLED=`extract_value "$stack_output" RecognizeFileEnabled`
+# export VITE_APP_TTS_ENABLED=`extract_value "$stack_output" TTSEnabled`
+export VITE_APP_TTS_ENABLED=true

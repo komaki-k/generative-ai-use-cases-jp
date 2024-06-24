@@ -21,32 +21,39 @@
     "kendraIndexArn": null,
     "kendraDataSourceBucketName": null,
     "selfSignUpEnabled": true,
-    "allowedSignUpEmailDomains": null,
+    "allowedSignUpEmailDomains": ["iret.co.jp", "cloudpack.jp"],
     "samlAuthEnabled": false,
     "samlCognitoDomainName": "",
     "samlCognitoFederatedIdentityProviderName": "",
     "modelRegion": "us-east-1",
     "modelIds": [
-      "anthropic.claude-3-sonnet-20240229-v1:0"
+      "anthropic.claude-3-sonnet-20240229-v1:0",
+      "anthropic.claude-3-haiku-20240307-v1:0"
     ],
     "imageGenerationModelIds": [
       "stability.stable-diffusion-xl-v1"
     ],
     "endpointNames": [],
-    "agentEnabled": false,
+    "agentEnabled": true,
     "agentRegion": "us-east-1",
-    "searchAgentEnabled": false,
+    "searchAgentEnabled": true,
     "searchApiKey": "",
-    "agents": [],
-    "allowedIpV4AddressRanges": null,
+    "agents": [
+      {
+        "displayName": "Knowledge base",
+        "agentId": "BWTYT1RHUY",
+        "aliasId": "FDZB6Z6CWI"
+      }
+    ],
+    "allowedIpV4AddressRanges": ["134.238.4.84/32", "134.238.4.83/32", "114.141.120.50/32", "114.141.120.185/32"],
     "allowedIpV6AddressRanges": null,
     "allowedCountryCodes": null,
     "hostName": null,
     "domainName": null,
     "hostedZoneId": null,
-    "dashboard": false,
+    "dashboard": true,
     "anonymousUsageTracking": true,
-    "recognizeFileEnabled": false,
+    "recognizeFileEnabled": true,
     "vpcId": null,
     "crossAccountBedrockRoleArn": "",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,

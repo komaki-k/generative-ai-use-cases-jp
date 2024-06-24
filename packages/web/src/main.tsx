@@ -26,6 +26,7 @@ import TranscribePage from './pages/TranscribePage';
 import AgentChatPage from './pages/AgentChatPage.tsx';
 import FileUploadPage from './pages/FileUploadPage.tsx';
 import { MODELS } from './hooks/useModel';
+import TTSPage from './pages/TTSPage.tsx';
 
 const ragEnabled: boolean = import.meta.env.VITE_APP_RAG_ENABLED === 'true';
 const samlAuthEnabled: boolean =
@@ -72,6 +73,10 @@ const routes: RouteObject[] = [
   {
     path: '/translate',
     element: <TranslatePage />,
+  },
+  {
+    path: '/tts',
+    element: <TTSPage />,
   },
   {
     path: '/web-content',

@@ -28,9 +28,11 @@ import useConversation from './hooks/useConversation';
 import PopupInterUseCasesDemo from './components/PopupInterUseCasesDemo';
 import useInterUseCases from './hooks/useInterUseCases';
 import { MODELS } from './hooks/useModel';
+import { MdOutlineRecordVoiceOver } from 'react-icons/md';
 
 const ragEnabled: boolean = import.meta.env.VITE_APP_RAG_ENABLED === 'true';
 const agentEnabled: boolean = import.meta.env.VITE_APP_AGENT_ENABLED === 'true';
+// const ttsEnabled: boolean = import.meta.env.VITE_APP_TTS_ENABLED === 'true';
 const recognizeFileEnabled: boolean =
   import.meta.env.VITE_APP_RECOGNIZE_FILE_ENABLED === 'true';
 const { multiModalModelIds } = MODELS;
@@ -115,6 +117,12 @@ const items: ItemProps[] = [
         display: 'usecase' as const,
       }
     : null,
+  {
+    label: '音声読み上げ',
+    to: '/tts',
+    icon: <MdOutlineRecordVoiceOver />,
+    display: 'usecase' as const,
+  },
   {
     label: '音声認識',
     to: '/transcribe',
