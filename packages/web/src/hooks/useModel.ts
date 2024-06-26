@@ -7,6 +7,10 @@ const bedrockModelIds: string[] = JSON.parse(import.meta.env.VITE_APP_MODEL_IDS)
   .map((name: string) => name.trim())
   .filter((name: string) => name);
 
+// const langchainModelNames: string[] = JSON.parse(import.meta.env.VITE_APP_LANGCHAIN_MODEL_NAMES)
+//   .map((name: string) => name.trim())
+//   .filter((name: string) => name);
+
 const multiModalModelIds: string[] = JSON.parse(
   import.meta.env.VITE_APP_MULTI_MODAL_MODEL_IDS
 )
@@ -65,3 +69,7 @@ export const MODELS = {
   imageGenModels: imageGenModels,
   agentModels: agentModels,
 };
+
+// export const LANGCHAIN_MODELS = {
+//   langchainModelNames: [...langchainModelNames]
+// }

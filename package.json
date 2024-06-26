@@ -30,5 +30,11 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@langchain/community": "^0.2.14",
+    "@langchain/core": "^0.2.10",
+    "@langchain/openai": "^0.2.0",
+    "langchain": "^0.2.7"
+  }
 }

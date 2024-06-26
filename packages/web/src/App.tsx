@@ -28,7 +28,7 @@ import useConversation from './hooks/useConversation';
 import PopupInterUseCasesDemo from './components/PopupInterUseCasesDemo';
 import useInterUseCases from './hooks/useInterUseCases';
 import { MODELS } from './hooks/useModel';
-import { MdOutlineRecordVoiceOver } from 'react-icons/md';
+import { MdAttachFile, MdOutlineRecordVoiceOver } from 'react-icons/md';
 
 const ragEnabled: boolean = import.meta.env.VITE_APP_RAG_ENABLED === 'true';
 const agentEnabled: boolean = import.meta.env.VITE_APP_AGENT_ENABLED === 'true';
@@ -121,6 +121,12 @@ const items: ItemProps[] = [
     label: '音声読み上げ',
     to: '/tts',
     icon: <MdOutlineRecordVoiceOver />,
+    display: 'usecase' as const,
+  },
+  {
+    label: 'Langchain',
+    to: '/langchain',
+    icon: <MdAttachFile />,
     display: 'usecase' as const,
   },
   {

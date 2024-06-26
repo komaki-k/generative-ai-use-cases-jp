@@ -27,6 +27,7 @@ import AgentChatPage from './pages/AgentChatPage.tsx';
 import FileUploadPage from './pages/FileUploadPage.tsx';
 import { MODELS } from './hooks/useModel';
 import TTSPage from './pages/TTSPage.tsx';
+import LangchainPage from './pages/Langchain.tsx';
 
 const ragEnabled: boolean = import.meta.env.VITE_APP_RAG_ENABLED === 'true';
 const samlAuthEnabled: boolean =
@@ -89,6 +90,10 @@ const routes: RouteObject[] = [
   {
     path: '/transcribe',
     element: <TranscribePage />,
+  },
+  {
+    path: '/langchain',
+    element: <LangchainPage />,
   },
   multiModalEnabled
     ? {

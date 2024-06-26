@@ -30,11 +30,16 @@ const useChatState = create<{
   modelIds: {
     [id: string]: string;
   };
+  // langchainModelNames: {
+  //   [name: string]: string;
+  // };
   loading: {
     [id: string]: boolean;
   };
   getModelId: (id: string) => string;
   setModelId: (id: string, newModelId: string) => void;
+  // getLangchianModelName: (name: string) => string;
+  // setLangchianModeName: (name: string, newModelName: string) => void;
   setLoading: (id: string, newLoading: boolean) => void;
   init: (id: string) => void;
   clear: (id: string) => void;
@@ -81,6 +86,21 @@ const useChatState = create<{
       };
     });
   };
+
+  // const getLangchianModelName = (name: string) => {
+  //   return get().modelIds[name] || '';
+  // };
+
+  // const setLangchianModeName = (name: string, newModelName: string) => {
+  //   set((state) => {
+  //     return {
+  //       modelIds: {
+  //         ...state.langchainModelNames,
+  //         [name]: newModelName,
+  //       },
+  //     };
+  //   });
+  // };
 
   const setLoading = (id: string, newLoading: boolean) => {
     set((state) => {
@@ -291,6 +311,8 @@ const useChatState = create<{
     loading: {},
     getModelId,
     setModelId,
+    // getLangchianModelName,
+    // setLangchianModeName,
     setLoading,
     init: (id: string) => {
       if (!get().chats[id]) {
