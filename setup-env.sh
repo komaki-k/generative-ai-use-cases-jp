@@ -29,5 +29,3 @@ export VITE_APP_SAML_COGNITO_DOMAIN_NAME=`extract_value "$stack_output" SamlCogn
 export VITE_APP_SAML_COGNITO_FEDERATED_IDENTITY_PROVIDER_NAME=`extract_value "$stack_output" SamlCognitoFederatedIdentityProviderName`
 export VITE_APP_AGENT_NAMES=`extract_value "$stack_output" AgentNames`
 export VITE_APP_RECOGNIZE_FILE_ENABLED=`extract_value "$stack_output" RecognizeFileEnabled`
-# export VITE_APP_TTS_ENABLED=`extract_value "$stack_output" TTSEnabled`
-export VITE_APP_TTS_ENABLED=true
