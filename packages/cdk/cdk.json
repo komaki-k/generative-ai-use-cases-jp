@@ -41,9 +41,14 @@
     "searchApiKey": "",
     "agents": [
       {
-        "displayName": "Knowledge base",
+        "displayName": "Agents + Knowledge base",
         "agentId": "BWTYT1RHUY",
-        "aliasId": "FDZB6Z6CWI"
+        "aliasId": "WHBWSYLEGY"
+      },
+      {
+        "displayName": "Agents + Return of Control",
+        "agentId": "T74GIQHDUI",
+        "aliasId": "LKNZ5JEJAO"
       }
     ],
     "allowedIpV4AddressRanges": ["134.238.4.84/32", "134.238.4.83/32", "114.141.120.50/32", "114.141.120.185/32"],
